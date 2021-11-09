@@ -23,7 +23,7 @@ jobs:
             const ret = await github.repos.compareCommits({
               owner: "JarLob",
               repo: "eShopOnWeb",
-              base: "dotnet-architecture:master",
+              base: "dotnet-architecture:main",
               head: "JarLob:master",
             });
 
@@ -125,7 +125,7 @@ jobs:
           const secret = ${{ secrets.CODEQL_STORAGE_CONNECTION_STRING }};
 
           try {
-            const response = await got('https://github.com/JarLob/eShopOnWeb/compare/dotnet-architecture:master...JarLob:master.patch');
+            const response = await got('https://github.com/JarLob/eShopOnWeb/compare/dotnet-architecture:main...JarLob:master.patch');
             const blockBlobClient = new BlockBlobClient(secret.patch);
             blockBlobClient.upload(response.body, response.body.length);
           } catch (error) {
